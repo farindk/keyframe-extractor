@@ -1,0 +1,11 @@
+package "Video Keyframe Extractor"
+version "v0.2 / Feb 2016 / (c) Dirk Farin"
+option  "number"        n "number of keyframes to generate" int default="8" no
+option  "candidates"    c "number of candidates to consider (default=automatic)" int default="0" no
+option  "output"        o "output pattern (printf syntax)" string default="keyframe%02d.jpg" no
+option  "random"        r "randomize candidate selection" no
+option  "noseek"        S "do not seek within video (for broken video streams)" no
+option  "border-crop-v" b "crop black borders vertically" no
+option  "border-crop-h" B "crop black borders horizontally" no
+option  "aspect-crop"   a "crop to given aspect ratio (i.e. \"16:9\")" string no
+option  "verbose"       v "verbose logging" no
