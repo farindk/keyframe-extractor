@@ -25,5 +25,7 @@ EXTRA_DIST = \
   README
 
 
+extractor.cc: cmdline.c
+
 cmdline.c: cmdline.ggo
 	gengetopt -u -i cmdline.ggo
