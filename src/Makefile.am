@@ -10,14 +10,13 @@ extractor_LDADD = -lstdc++ -lpthread #../libde265/libde265.la
 extractor_SOURCES = \
   extractor.cc \
   cmdline.c \
-  decoder.cc decoder.hh
-
-#LOCATION=/usr/local/lib
-LOCATION=/home/domain/farindk/sys/lib
+  decoder.cc decoder.hh \
+  libcvalgo/histogram.hh libcvalgo/histogram.cc \
+  libcvalgo/histogram_diff.hh libcvalgo/histogram_diff.cc
 
 extractor_CXXFLAGS += $(VIDEOGFX_CFLAGS)
-#extractor_LDFLAGS += $(VIDEOGFX_LIBS)
-extractor_LDFLAGS += $(LOCATION)/libvideogfx.a -ljpeg $(LOCATION)/libcvalgo.a # $(VIDEOGFX_LIBS)
+extractor_LDFLAGS += $(VIDEOGFX_LIBS)
+extractor_LDFLAGS += -ljpeg
 
 extractor_CXXFLAGS += $(SWSCALE_CFLAGS) $(AVUTIL_CFLAGS) $(AVFORMAT_CFLAGS) $(AVCODEC_CFLAGS) $(X264_CFLAGS)
 extractor_LDFLAGS += $(SWSCALE_LIBS) $(AVUTIL_LIBS) $(AVFORMAT_LIBS) $(AVCODEC_LIBS) $(X264_LIBS)

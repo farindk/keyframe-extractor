@@ -1,28 +1,28 @@
 /*
- * Clutch video cutting application.
+ * Extractor
  * Copyright (c) 2014-2015 Dirk Farin <dirk.farin@gmail.com>
  *
- * This file is part of Clutch, a simple video cutting application.
+ * This file is part of Extractor, a simple video key-frame extration tool.
  *
- * Clutch is free software: you can redistribute it and/or modify
+ * Extractor is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Clutch is distributed in the hope that it will be useful,
+ * Extractor is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Clutch.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Extractor.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "decoder.hh"
 #include <vector>
 #include <algorithm>
 #include <libvideogfx.hh>
-#include <libcvalgo/features/histogram_diff.hh>
+#include "libcvalgo/histogram_diff.hh"
 #include "cmdline.h"
 
 using namespace videogfx;
@@ -90,6 +90,9 @@ struct Candidate
   int64_t frameNr;
   Image<Pixel> image;
   cvalgo::Histogram histogram;
+
+  int64_t pts;
+  double timestamp;
 
   double entropy;
   double min_histogram_distance;
@@ -333,6 +336,10 @@ int main(int argc, char **argv)
       }
     }
 
+    c.pts = decoder.getFramePTS(c.frameNr);
+    c.timestamp = decoder.PTS2Time(c.pts);
+
+
     Image<Pixel> img = convertToImage(frame);
     c.image = img;
 
@@ -407,6 +414,10 @@ int main(int argc, char **argv)
       char name[100];
       sprintf(name, args_info.output_arg ,cnt);
       WriteImage_JPEG(name, c.image);
+
+      if (args_info.verbose_given) {
+        printf("frame-number: %lld  PTS: %lld  timestamp: %lf\n", c.frameNr, c.pts, c.timestamp);
+      }
     }
 
     cnt++;
