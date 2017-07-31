@@ -1,5 +1,5 @@
 /********************************************************************************
-  $Header: /home/farin/cvs/libcvalgo/libcvalgo/features/histogram_diff.hh,v 1.3 2004/09/29 08:54:41 farin Exp $
+  $Header: /home/farin/cvs/libcvalgo/libcvalgo/histogram_diff.hh,v 1.3 2004/09/29 08:54:41 farin Exp $
 
     Simple histogram difference measures.
  ********************************************************************************
@@ -9,7 +9,7 @@
 #ifndef LIBCVALGO_FEATURES_HISTOGRAM_DIFF_HH
 #define LIBCVALGO_FEATURES_HISTOGRAM_DIFF_HH
 
-#include "libcvalgo/features/histogram.hh"
+#include "libcvalgo/histogram.hh"
 
 namespace cvalgo {
   using namespace videogfx;

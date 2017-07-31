@@ -2,7 +2,7 @@
    Copyright (C) 2003 Dirk Farin.    Unauthorized redistribution is prohibited.
  ********************************************************************************/
 
-#include "libcvalgo/features/histogram_diff.hh"
+#include "libcvalgo/histogram_diff.hh"
 
 namespace cvalgo {
 
