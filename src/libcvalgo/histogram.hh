@@ -1,5 +1,5 @@
 /********************************************************************************
-  $Header: /home/farin/cvs/libcvalgo/libcvalgo/features/histogram.hh,v 1.4 2004/09/29 08:54:41 farin Exp $
+  $Header: /home/farin/cvs/libcvalgo/libcvalgo/histogram.hh,v 1.4 2004/09/29 08:54:41 farin Exp $
 
     Simple histogram data structure.
  ********************************************************************************
